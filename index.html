@@ -7,17 +7,19 @@
   </head>
   <body>
     <script type="text/javascript">
+      var bestof = 5
       var inputs = ["rock", "paper", "scissors"];
+      var outcomes = ["won", "lost", "tied"]
       var userInput;
       var win = 0;
       var loss = 0;
       var draw = 0;
       var result;
 
-      for (var i = 1; i <= 5; i++) {
+      for (var i = 1; i <= bestof; i++) {
        
         //parse input and validate
-        userInput = prompt("Choose Rock, Paper or Scissors");
+        userInput = prompt("Choose " + inputs[0] + ", " + inputs[1] + " or " + inputs[2] + " (r,p,s)");
         if (userInput == "r") {
           userInput = 0;
         }
@@ -40,17 +42,17 @@
         //evaluate user input against computer input
         if (userInput == computerInput) {
           draw += 1
-          result = 'tied'
+          result = outcomes[2]
         } else if (
           (userInput == 0 && computerInput == 2) ||
           (userInput == 1 && computerInput == 0) ||
           (userInput == 2 && computerInput == 1)
         ) {
           win += 1
-          result = 'won'
+          result = outcomes[0]
         } else {
           loss +=1
-          result = 'lost'
+          result = outcomes[1]
         }
        
         //display result
@@ -65,17 +67,17 @@
       var bestofResult
       //evalute bestof result
       if (win > loss) {
-        bestofResult = "won"
+        bestofResult = outcomes[0]
       }
       else if (win < loss) {
-        bestofResult = "lost"
+        bestofResult = outcomes[1]
       }
       else {
-          bestofResult = "tied"
+          bestofResult = outcomes[2]
       }
 
       //display bestof result
-      alert("Wins: " + win + " Loss: " + loss + " Draws: " + draw + ". You " + bestofResult + " best of 5")
+      alert("Wins: " + win + " Loss: " + loss + " Draws: " + draw + ". You " + bestofResult + " best of " + bestof)
 
     </script>
   </body>
